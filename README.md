@@ -34,7 +34,7 @@ npm install webpack-dev-server -g
 ```
 5.) Create and migrate Sqlite Databases
 ```
-bundle exec rake db:create && bundle exec rake db:migrate
+bundle exec rake db:create db:migrate
 ```
 6.) Copy the .env.sample to .env and fill out the values
 ```
