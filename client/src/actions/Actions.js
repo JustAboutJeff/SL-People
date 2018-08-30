@@ -13,3 +13,10 @@ export function receivePeople(people) {
     people
   }
 }
+
+export function receivePeopleAnalysis (analysis) {
+  return {
+    type: actions.RECEIVE_PEOPLE_ANALYSIS,
+    analysis
+  }
+}
