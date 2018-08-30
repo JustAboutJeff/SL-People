@@ -11,22 +11,26 @@ RSpec.describe SalesLoft::PeopleService do
 
     context 'success' do
       before do
+        expect(SalesLoft::PeopleSerializer)
+          .to receive(:new)
+          .once
+          .and_call_original
         expect(service.client)
           .to receive(:get)
           .twice
           .and_return \
             double(
-              body: { data: [1,2], metadata: { paging: { next_page: 2 } } }.to_json
+              body: { data: [{}], metadata: { paging: { next_page: 2 } } }.to_json
             ),
             double(
-              body: { data: [3,4], metadata: { paging: { next_page: nil } } }.to_json
+              body: { data: [{}], metadata: { paging: { next_page: nil } } }.to_json
             )
       end
 
       it 'returns success result' do
         result = service.get_all
         expect(result).to be_a SalesLoft::PeopleService::Result
-        expect(result.json).to eq [1,2,3,4]
+        expect(result.json).to be_present
         expect(result.status).to eq :ok
       end
     end

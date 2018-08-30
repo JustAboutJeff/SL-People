@@ -15,6 +15,7 @@ module SalesLoft
         json.concat data if data.present?
         break if page.blank?
       end
+      json = PeopleSerializer.new(json).serializable_hash
       Result.new json, :ok
     rescue ApiService::RequestFailed => error
       json = { error: error.message }
