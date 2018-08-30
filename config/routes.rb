@@ -7,4 +7,6 @@ Rails.application.routes.draw do
   end
 
   root to: "main#index"
+
+  get '*wildcard', to: 'main#index'
 end
