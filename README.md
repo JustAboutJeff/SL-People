@@ -45,3 +45,14 @@ bundle exec foreman start
 ```
 8.) Navigate to localhost:5000
 
+### Running tests
+
+1.) To run the server side ruby suite:
+```
+bin/bundle exec rspec
+```
+2.) To run the client side js suite:
+```
+npm test
+```
+
