@@ -3,8 +3,9 @@ import PropTypes from 'prop-types'
 import { Provider } from 'react-redux'
 import { ThemeProvider } from 'styled-components'
 
-import { BrowserRouter as Router, Route } from 'react-router-dom'
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import { LandingPage } from './LandingPage'
+import PeoplePage from '../containers/ConnectedPeoplePage'
 
 const theme = {
   main: {
@@ -13,23 +14,26 @@ const theme = {
       light: '#887CAF',
       medium_light: '#615192',
       medium_dark: '#261758',
-      dark: '#13073A',
+      dark: '#13073A'
     }
   }
-};
+}
 
 const App = ({ store }) => (
   <Provider store={store}>
     <ThemeProvider theme={theme}>
       <Router>
-          <Route exact path="/" component={LandingPage}/>
+        <Switch>
+          <Route exact path='/' component={LandingPage} />
+          <Route exact path='/people' component={PeoplePage} />
+        </Switch>
       </Router>
     </ThemeProvider>
   </Provider>
-);
+)
 
 App.propTypes = {
   store: PropTypes.object.isRequired
-};
+}
 
 export default App

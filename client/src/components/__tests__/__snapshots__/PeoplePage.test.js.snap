@@ -1,0 +1,93 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`PeoplePage renders 1`] = `
+<styled.div>
+  <styled.div>
+    <table>
+      <thead>
+        <Styled(styled.tr)>
+          <td>
+            Name
+          </td>
+          <td>
+            Email
+          </td>
+          <td>
+            Title
+          </td>
+        </Styled(styled.tr)>
+      </thead>
+      <tbody>
+        <styled.tr>
+          <td>
+            Marisa Casper
+          </td>
+          <td>
+            isnaoj_nathz@ihooberbrunner.net
+          </td>
+          <td>
+            Direct Security Representative
+          </td>
+        </styled.tr>
+        <styled.tr>
+          <td>
+            Griffin Hand
+          </td>
+          <td>
+            mamixe@lindgren.info
+          </td>
+          <td>
+            International Usability Agent
+          </td>
+        </styled.tr>
+      </tbody>
+    </table>
+  </styled.div>
+</styled.div>
+`;
+
+exports[`PeoplePage with people data renders 1`] = `
+<styled.div>
+  <styled.div>
+    <table>
+      <thead>
+        <Styled(styled.tr)>
+          <td>
+            Name
+          </td>
+          <td>
+            Email
+          </td>
+          <td>
+            Title
+          </td>
+        </Styled(styled.tr)>
+      </thead>
+      <tbody>
+        <styled.tr>
+          <td>
+            Marisa Casper
+          </td>
+          <td>
+            isnaoj_nathz@ihooberbrunner.net
+          </td>
+          <td>
+            Direct Security Representative
+          </td>
+        </styled.tr>
+        <styled.tr>
+          <td>
+            Griffin Hand
+          </td>
+          <td>
+            mamixe@lindgren.info
+          </td>
+          <td>
+            International Usability Agent
+          </td>
+        </styled.tr>
+      </tbody>
+    </table>
+  </styled.div>
+</styled.div>
+`;

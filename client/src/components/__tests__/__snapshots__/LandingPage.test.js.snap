@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`LandingPage renders 1`] = `
+<styled.div>
+  <Connect(NavBar) />
+  <styled.div>
+    <Intro />
+    <Styled(Link)
+      to="/people"
+    >
+      People Page
+    </Styled(Link)>
+  </styled.div>
+</styled.div>
+`;

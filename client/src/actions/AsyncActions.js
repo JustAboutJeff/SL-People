@@ -1,11 +1,19 @@
 import * as actions from './Actions'
 
-export const creds = { credentials: 'same-origin' };
+export const creds = { credentials: 'same-origin' }
 
-export function fetchMe() {
+export function fetchMe () {
   return dispatch => {
-    return fetch('/api/me.json', creds).
-      then(response => response.json()).
-      then(me => dispatch(actions.receiveMe(me)));
+    return fetch('/api/me.json', creds)
+      .then(response => response.json())
+      .then(me => dispatch(actions.receiveMe(me)))
+  }
+}
+
+export function fetchPeople () {
+  return dispatch => {
+    return fetch('/api/people.json', creds)
+      .then(response => response.json())
+      .then(json => dispatch(actions.receivePeople(json.people)))
   }
 }
