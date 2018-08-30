@@ -8,7 +8,7 @@ export default class PeopleService {
     return new Promise((resolve, reject) => {
       // NOTE: build a dictionary object of char to count mappings
       const dictionary = this.people.reduce((dictionary, person) => {
-        person.displayName
+        person.emailAddress
           .split('')
           .forEach(char => (dictionary[char] = (dictionary[char] || 0) + 1))
         return dictionary
