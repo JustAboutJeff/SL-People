@@ -1,5 +1,5 @@
 import * as actions from './Actions'
-import PeopleService from '../services/People'
+import PeopleService from '../services/PeopleService'
 
 export const creds = { credentials: 'same-origin' }
 
