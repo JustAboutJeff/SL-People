@@ -57,7 +57,8 @@ const StateButton = styled.button`
   color: white;
   cursor: pointer;
   display: flex;
-  font-size: 1.5rem;
+  font-size: 1rem;
+  text-decoration: underline;
   font-weight: bold;
   justify-content: center;
   min-width: 4rem;
@@ -71,7 +72,7 @@ const HomeButton = styled(Link)`
   border-radius: 0.5rem;
   color: white;
   display: flex;
-  font-size: 1.5rem;
+  font-size: 1rem;
   font-weight: bold;
   justify-content: center;
   min-width: 4rem;
@@ -87,21 +88,38 @@ const ButtonBar = styled.div`
   justify-content: space-between;
 `
 
+const initialState = {
+  showCharacterAnalysis: false,
+  showDuplicateAnalysis: false
+}
+
 export class PeoplePage extends Component {
   constructor (props) {
     super(props)
-    this.state = { showCharacterAnalysis: false }
-    this.handleClick = this.handleClick.bind(this)
+    this.state = Object.assign({}, initialState)
+    this.handleCharacterClick = this.handleCharacterClick.bind(this)
+    this.handleDuplicateClick = this.handleDuplicateClick.bind(this)
+    this.handlePeopleClick = this.handlePeopleClick.bind(this)
   }
 
   componentWillMount () {
     this.props.fetchPeople()
   }
 
-  handleClick (e) {
-    this.setState(prev => ({
-      showCharacterAnalysis: !prev.showCharacterAnalysis
-    }))
+  handleCharacterClick (e) {
+    this.setState(
+      Object.assign({}, initialState, { showCharacterAnalysis: true })
+    )
+  }
+
+  handleDuplicateClick (e) {
+    this.setState(
+      Object.assign({}, initialState, { showDuplicateAnalysis: true })
+    )
+  }
+
+  handlePeopleClick (e) {
+    this.setState(Object.assign({}, initialState))
   }
 
   renderLoading () {
@@ -132,7 +150,40 @@ export class PeoplePage extends Component {
       </TableWrap>,
       <ButtonBar key='2'>
         <HomeButton to={'/'}>Home</HomeButton>
-        <StateButton onClick={this.handleClick}>People</StateButton>
+        <StateButton onClick={this.handlePeopleClick}>People</StateButton>
+        <StateButton onClick={this.handleDuplicateClick}>
+          Duplicate Analysis
+        </StateButton>
+      </ButtonBar>
+    ]
+  }
+
+  renderDuplicateAnalysisRows (duplicateAnalysis) {
+    return duplicateAnalysis.map((duplicate, idx) => (
+      <TableRow key={idx}>
+        <td>{duplicate}</td>
+      </TableRow>
+    ))
+  }
+
+  renderDuplicateAnalysis (duplicateAnalysis) {
+    return [
+      <TableWrap key='1'>
+        <Table>
+          <thead>
+            <TableHeadRow>
+              <TableHeader>Duplicate</TableHeader>
+            </TableHeadRow>
+          </thead>
+          <tbody>{this.renderDuplicateAnalysisRows(duplicateAnalysis)}</tbody>
+        </Table>
+      </TableWrap>,
+      <ButtonBar key='2'>
+        <HomeButton to={'/'}>Home</HomeButton>
+        <StateButton onClick={this.handleCharacterClick}>
+          Character Analysis
+        </StateButton>
+        <StateButton onClick={this.handlePeopleClick}>People</StateButton>
       </ButtonBar>
     ]
   }
@@ -163,22 +214,33 @@ export class PeoplePage extends Component {
       </TableWrap>,
       <ButtonBar key='2'>
         <HomeButton to={'/'}>Home</HomeButton>
-        <StateButton onClick={this.handleClick}>Analyze</StateButton>
+        <StateButton onClick={this.handleCharacterClick}>
+          Character Analysis
+        </StateButton>
+        <StateButton onClick={this.handleDuplicateClick}>
+          Duplicate Analysis
+        </StateButton>
       </ButtonBar>
     ]
   }
 
   render () {
     const {
-      props: { characterAnalysis, people },
-      state: { showCharacterAnalysis }
+      props: { characterAnalysis, duplicateAnalysis, people },
+      state: { showCharacterAnalysis, showDuplicateAnalysis }
     } = this
 
     let content = this.renderLoading()
 
     if (characterAnalysis.length && showCharacterAnalysis) {
       content = this.renderCharacterAnalysis(characterAnalysis)
-    } else if (people.length) {
+    } else if (duplicateAnalysis.length && showDuplicateAnalysis) {
+      content = this.renderDuplicateAnalysis(duplicateAnalysis)
+    } else if (
+      !showCharacterAnalysis &&
+      !showDuplicateAnalysis &&
+      people.length
+    ) {
       content = this.renderPeople(people)
     }
 
@@ -188,12 +250,14 @@ export class PeoplePage extends Component {
 
 PeoplePage.propTypes = {
   characterAnalysis: PropTypes.array,
+  duplicateAnalysis: PropTypes.array,
   people: PropTypes.array,
   fetchPeople: PropTypes.func
 }
 
 PeoplePage.defaultProps = {
   characterAnalysis: [],
+  duplicateAnalysis: [],
   people: [],
   fetchPeople: Function.prototype
 }

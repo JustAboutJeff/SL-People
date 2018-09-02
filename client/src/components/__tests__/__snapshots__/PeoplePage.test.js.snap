@@ -52,7 +52,12 @@ exports[`PeoplePage renders 1`] = `
     <styled.button
       onClick={[Function]}
     >
-      Analyze
+      Character Analysis
+    </styled.button>
+    <styled.button
+      onClick={[Function]}
+    >
+      Duplicate Analysis
     </styled.button>
   </styled.div>
 </styled.div>
@@ -110,7 +115,12 @@ exports[`PeoplePage with people data renders 1`] = `
     <styled.button
       onClick={[Function]}
     >
-      Analyze
+      Character Analysis
+    </styled.button>
+    <styled.button
+      onClick={[Function]}
+    >
+      Duplicate Analysis
     </styled.button>
   </styled.div>
 </styled.div>
