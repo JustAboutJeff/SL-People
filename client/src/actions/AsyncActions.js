@@ -19,7 +19,9 @@ export function fetchPeople () {
         dispatch(actions.receivePeople(json.people))
         return json.people
       })
-      .then(people => new PeopleService(people).analysis())
-      .then(analysis => dispatch(actions.receivePeopleAnalysis(analysis)))
+      .then(people => new PeopleService(people).characterAnalysis())
+      .then(characterAnalysis =>
+        dispatch(actions.receivePeopleCharacterAnalysis(characterAnalysis))
+      )
   }
 }

@@ -3,7 +3,7 @@ export default class PeopleService {
     this.people = people
   }
 
-  analysis () {
+  characterAnalysis () {
     // NOTE: this work happens async
     return new Promise((resolve, reject) => {
       // NOTE: build a dictionary object of char to count mappings
@@ -16,11 +16,7 @@ export default class PeopleService {
 
       // NOTE: sort chars by count in descending order
       const result = Object.entries(dictionary).sort(
-        ([_, currCount], [__, nextCount]) => {
-          if (currCount > nextCount) return -1
-          if (currCount < nextCount) return 1
-          return 0
-        }
+        ([_, currCount], [__, nextCount]) => nextCount - currCount
       )
 
       resolve(result)

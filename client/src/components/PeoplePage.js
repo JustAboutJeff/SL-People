@@ -90,7 +90,7 @@ const ButtonBar = styled.div`
 export class PeoplePage extends Component {
   constructor (props) {
     super(props)
-    this.state = { showAnalysis: false }
+    this.state = { showCharacterAnalysis: false }
     this.handleClick = this.handleClick.bind(this)
   }
 
@@ -99,15 +99,17 @@ export class PeoplePage extends Component {
   }
 
   handleClick (e) {
-    this.setState(prev => ({ showAnalysis: !prev.showAnalysis }))
+    this.setState(prev => ({
+      showCharacterAnalysis: !prev.showCharacterAnalysis
+    }))
   }
 
   renderLoading () {
     return <img src='/loading.gif' alt='Please wait your people are loading!' />
   }
 
-  renderAnalysisRows (analysis) {
-    return analysis.map(([character, count], idx) => (
+  renderCharacterAnalysisRows (characterAnalysis) {
+    return characterAnalysis.map(([character, count], idx) => (
       <TableRow key={idx}>
         <td>{character}</td>
         <td>{count}</td>
@@ -115,7 +117,7 @@ export class PeoplePage extends Component {
     ))
   }
 
-  renderAnalysis (analysis) {
+  renderCharacterAnalysis (characterAnalysis) {
     return [
       <TableWrap key='1'>
         <Table>
@@ -125,7 +127,7 @@ export class PeoplePage extends Component {
               <TableHeader>Count</TableHeader>
             </TableHeadRow>
           </thead>
-          <tbody>{this.renderAnalysisRows(analysis)}</tbody>
+          <tbody>{this.renderCharacterAnalysisRows(characterAnalysis)}</tbody>
         </Table>
       </TableWrap>,
       <ButtonBar key='2'>
@@ -167,12 +169,15 @@ export class PeoplePage extends Component {
   }
 
   render () {
-    const { props: { analysis, people }, state: { showAnalysis } } = this
+    const {
+      props: { characterAnalysis, people },
+      state: { showCharacterAnalysis }
+    } = this
 
     let content = this.renderLoading()
 
-    if (analysis.length && showAnalysis) {
-      content = this.renderAnalysis(analysis)
+    if (characterAnalysis.length && showCharacterAnalysis) {
+      content = this.renderCharacterAnalysis(characterAnalysis)
     } else if (people.length) {
       content = this.renderPeople(people)
     }
@@ -182,13 +187,13 @@ export class PeoplePage extends Component {
 }
 
 PeoplePage.propTypes = {
-  analysis: PropTypes.array,
+  characterAnalysis: PropTypes.array,
   people: PropTypes.array,
   fetchPeople: PropTypes.func
 }
 
 PeoplePage.defaultProps = {
-  analysis: [],
+  characterAnalysis: [],
   people: [],
   fetchPeople: Function.prototype
 }
