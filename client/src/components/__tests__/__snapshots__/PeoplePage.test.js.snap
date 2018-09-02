@@ -3,18 +3,18 @@
 exports[`PeoplePage renders 1`] = `
 <styled.div>
   <styled.div>
-    <table>
+    <styled.table>
       <thead>
         <Styled(styled.tr)>
-          <td>
+          <styled.th>
             Name
-          </td>
-          <td>
+          </styled.th>
+          <styled.th>
             Email
-          </td>
-          <td>
+          </styled.th>
+          <styled.th>
             Title
-          </td>
+          </styled.th>
         </Styled(styled.tr)>
       </thead>
       <tbody>
@@ -41,7 +41,19 @@ exports[`PeoplePage renders 1`] = `
           </td>
         </styled.tr>
       </tbody>
-    </table>
+    </styled.table>
+  </styled.div>
+  <styled.div>
+    <Styled(Link)
+      to="/"
+    >
+      Home
+    </Styled(Link)>
+    <styled.button
+      onClick={[Function]}
+    >
+      Analyze
+    </styled.button>
   </styled.div>
 </styled.div>
 `;
@@ -49,18 +61,18 @@ exports[`PeoplePage renders 1`] = `
 exports[`PeoplePage with people data renders 1`] = `
 <styled.div>
   <styled.div>
-    <table>
+    <styled.table>
       <thead>
         <Styled(styled.tr)>
-          <td>
+          <styled.th>
             Name
-          </td>
-          <td>
+          </styled.th>
+          <styled.th>
             Email
-          </td>
-          <td>
+          </styled.th>
+          <styled.th>
             Title
-          </td>
+          </styled.th>
         </Styled(styled.tr)>
       </thead>
       <tbody>
@@ -87,7 +99,19 @@ exports[`PeoplePage with people data renders 1`] = `
           </td>
         </styled.tr>
       </tbody>
-    </table>
+    </styled.table>
+  </styled.div>
+  <styled.div>
+    <Styled(Link)
+      to="/"
+    >
+      Home
+    </Styled(Link)>
+    <styled.button
+      onClick={[Function]}
+    >
+      Analyze
+    </styled.button>
   </styled.div>
 </styled.div>
 `;

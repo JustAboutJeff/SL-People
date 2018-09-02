@@ -29,12 +29,18 @@ const TableRow = styled.tr`
   }
 `
 const TableHeadRow = styled(TableRow)`
-  background-color: #4a90e2;
   font-size: 1.5rem;
   height: 3rem;
   color: white;
   font-weight: bold;
   text-align: center;
+`
+
+const TableHeader = styled.th`
+  background-color: #4a90e2;
+  box-shadow: 0 3px 0 0 rgba(0, 0, 0, 0.1);
+  position: sticky;
+  top: 0;
 `
 
 const StateButton = styled.button`
@@ -108,8 +114,8 @@ export class PeoplePage extends Component {
         <Table>
           <thead>
             <TableHeadRow>
-              <td>Character</td>
-              <td>Count</td>
+              <TableHeader>Character</TableHeader>
+              <TableHeader>Count</TableHeader>
             </TableHeadRow>
           </thead>
           <tbody>{this.renderAnalysisRows(analysis)}</tbody>
@@ -138,9 +144,9 @@ export class PeoplePage extends Component {
         <Table>
           <thead>
             <TableHeadRow>
-              <td>Name</td>
-              <td>Email</td>
-              <td>Title</td>
+              <TableHeader>Name</TableHeader>
+              <TableHeader>Email</TableHeader>
+              <TableHeader>Title</TableHeader>
             </TableHeadRow>
           </thead>
           <tbody>{this.renderPeopleRows(people)}</tbody>
