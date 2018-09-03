@@ -14,6 +14,7 @@ const Page = styled.div`
 const TableWrap = styled.div`
   height: 37.5rem;
   overflow-y: auto;
+  box-shadow: 0 0 6px 0 rgba(58, 58, 58, 0.24);
 `
 
 const Table = styled.table`
@@ -23,9 +24,15 @@ const Table = styled.table`
 
 const TableRow = styled.tr`
   padding: 1rem;
+  transition: box-shadow 0.25s;
 
   &:nth-child(even) {
     background-color: #f0f8ff;
+  }
+
+  &:hover {
+    box-shadow: inset 5px 0 0 0 rgba(0, 105, 224, 1),
+      inset -5px 0 0 0 rgba(0, 105, 224, 1);
   }
 `
 const TableHeadRow = styled(TableRow)`
