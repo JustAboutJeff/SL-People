@@ -20,3 +20,10 @@ export function receivePeopleCharacterAnalysis (characterAnalysis) {
     characterAnalysis
   }
 }
+
+export function receivePeopleDuplicateAnalysis (duplicateAnalysis) {
+  return {
+    type: actions.RECEIVE_PEOPLE_DUPLICATE_ANALYSIS,
+    duplicateAnalysis
+  }
+}

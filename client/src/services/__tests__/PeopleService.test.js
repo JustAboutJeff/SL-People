@@ -55,4 +55,42 @@ describe('PeopleService', () => {
       ['f', 1]
     ])
   })
+
+  it('duplicateAnalysis() returns a promise', () => {
+    expect(instance.duplicateAnalysis()).toBeInstanceOf(Promise)
+  })
+
+  it('duplicateAnalysis() resolves expected duplicate analysis', () => {
+    instance.people = [
+      {
+        id: 101694867,
+        displayName: 'Jones Boyle',
+        emailAddress: 'jonesboy@bist.co',
+        title: 'Network Liason'
+      },
+      {
+        id: 131644724,
+        displayName: 'Marge Bonness',
+        emailAddress: 'monness@best.co',
+        title: 'Director of Data'
+      },
+      {
+        id: 10594595,
+        displayName: 'Jose Valueza',
+        emailAddress: 'jooes@best.co',
+        title: 'Outside Counsel'
+      },
+      {
+        id: 10594595,
+        displayName: 'Xaviar Parker',
+        emailAddress: 'xa@bist.co',
+        title: 'Janitor'
+      }
+    ]
+
+    expect(instance.duplicateAnalysis()).resolves.toEqual([
+      'jonesboy@bist.co jooes@best.co',
+      'monness@best.co jooes@best.co'
+    ])
+  })
 })

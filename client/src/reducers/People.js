@@ -1,7 +1,8 @@
 import { merge } from '../utils'
 import {
   RECEIVE_PEOPLE,
-  RECEIVE_PEOPLE_CHARACTER_ANALYSIS
+  RECEIVE_PEOPLE_CHARACTER_ANALYSIS,
+  RECEIVE_PEOPLE_DUPLICATE_ANALYSIS
 } from '../actions/Constants'
 
 export function people (state = initial(), action) {
@@ -10,6 +11,8 @@ export function people (state = initial(), action) {
       return merge(state, { records: action.people })
     case RECEIVE_PEOPLE_CHARACTER_ANALYSIS:
       return merge(state, { characterAnalysis: action.characterAnalysis })
+    case RECEIVE_PEOPLE_DUPLICATE_ANALYSIS:
+      return merge(state, { duplicateAnalysis: action.duplicateAnalysis })
     default:
       return state
   }
@@ -18,6 +21,7 @@ export function people (state = initial(), action) {
 function initial () {
   return {
     records: [],
-    characterAnalysis: []
+    characterAnalysis: [],
+    duplicateAnalysis: []
   }
 }
